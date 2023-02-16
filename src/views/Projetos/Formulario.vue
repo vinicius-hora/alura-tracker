@@ -1,6 +1,5 @@
 <template>
-  <section class="projetos">
-    <h1>Projetos</h1>
+  <section>
     <form @submit.prevent="salvar">
       <div class="field">
         <label for="nomeDoProjeto" class="label"> Nome do Projeto </label>
@@ -16,31 +15,38 @@
         <button class="button" type="submit">salvar</button>
       </div>
     </form>
-  
   </section>
 </template>
 
 <script lang="ts">
-import {  defineComponent } from "vue";
+import { defineComponent } from "vue";
 import { useStore } from "@/store";
+import {
+  ALTERA_PROJETO,
+  ADICIONA_PROJETO,
+  NOTIFICAR,
+} from "@/store/tipo-mutacoes";
+import { TipoNotificacao } from "@/interfaces/INotificacao";
+import useNotificador  from "@/hooks/notificador"
 
 export default defineComponent({
   name: "Formulario",
   props: {
     id: {
-      type: String
-    }
+      type: String,
+    },
   },
-  mounted(){
-    if(this.id){
-      const projeto = this.store.state.projetos.find(proj => proj.id == this.id)
-      this.nomeDoProjeto = projeto?.nome || ''
+  mounted() {
+    if (this.id) {
+      const projeto = this.store.state.projetos.find(
+        (proj) => proj.id == this.id
+      );
+      this.nomeDoProjeto = projeto?.nome || "";
     }
   },
   data() {
     return {
       nomeDoProjeto: "",
-      
     };
   },
   methods: {
@@ -51,31 +57,32 @@ export default defineComponent({
       // };
       // this.projetos.push(projeto);
       // this.nomeDoProjeto = "";
-      if(this.id){
-        this.store.commit('ALTERA_PROJETO', {
+      if (this.id) {
+        this.store.commit(ALTERA_PROJETO, {
           id: this.id,
-          nome: this.nomeDoProjeto
-        })
-
-      }else{
-        this.store.commit('ADICIONA_PROJETO', this.nomeDoProjeto)
+          nome: this.nomeDoProjeto,
+        });
+      } else {
+        this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto);
       }
-      
+
       this.nomeDoProjeto = "";
-      this.$router.push('/projetos')
+
+      this.$router.push("/projetos");
+      this.notificar(TipoNotificacao.SUCESSO, 'Excelente', 'projeto cadastrado')
     },
+    
   },
-  setup(){
-    const store = useStore()
+  setup() {
+    const store = useStore();
+    const { notificar } = useNotificador()
     return {
-      store
-    }
-  }
+      store,
+      notificar
+    };
+  },
 });
 </script>
 
 <style scoped>
-.projetos {
-  padding: 1.25rem;
-}
 </style>
