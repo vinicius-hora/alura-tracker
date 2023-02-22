@@ -13,8 +13,37 @@
       "id": 3
     },
     {
-      "nome": "teste",
-      "id": 4
+      "id": 5,
+      "nome": "estudo vuex modulos parte 1"
+    }
+  ],
+  "tarefas": [
+    {
+      "id": 1,
+      "duracaoEmSEgundos": 50,
+      "descricao": "teste",
+      "projeto": {
+        "id": 1,
+        "nome": "alura tracker 3"
+      }
+    },
+    {
+      "duracaoEmSegundos": 4,
+      "descricao": "refatoração de projetos",
+      "projeto": {
+        "id": 1,
+        "nome": "alura tracker 3"
+      },
+      "id": 2
+    },
+    {
+      "duracaoEmSegundos": 4,
+      "descricao": "teste modulo",
+      "projeto": {
+        "id": 5,
+        "nome": "estudo vuex modulos parte 1"
+      },
+      "id": 3
     }
   ]
 }
