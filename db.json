@@ -5,8 +5,8 @@
       "nome": "alura tracker 3"
     },
     {
-      "nome": "bytebank",
-      "id": 2
+      "id": 2,
+      "nome": "bytebank 2.0"
     },
     {
       "nome": "teste",
@@ -15,13 +15,17 @@
     {
       "id": 5,
       "nome": "estudo vuex modulos parte 1"
+    },
+    {
+      "id": 6,
+      "nome": " estudando padrões de arquitetura 2.0"
     }
   ],
   "tarefas": [
     {
       "id": 1,
       "duracaoEmSEgundos": 50,
-      "descricao": "teste",
+      "descricao": "teste 4",
       "projeto": {
         "id": 1,
         "nome": "alura tracker 3"
@@ -44,6 +48,15 @@
         "nome": "estudo vuex modulos parte 1"
       },
       "id": 3
+    },
+    {
+      "duracaoEmSegundos": 5,
+      "descricao": "teste setup",
+      "projeto": {
+        "id": 6,
+        "nome": " estudando padrões de arquitetura 2.0"
+      },
+      "id": 4
     }
   ]
 }
